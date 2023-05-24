@@ -39,9 +39,6 @@ class VezivappointController extends Controller
             'phone'=> 'required|numeric',
             'email'=> 'required|email',
         ]);
-        $data = $request->validate([
-            'app_date' => 'required|gt:'.time(),
-        ]);
 
         $appointment = Vezivappoint::create($data);
 

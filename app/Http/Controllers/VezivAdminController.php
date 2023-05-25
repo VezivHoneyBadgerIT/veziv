@@ -164,7 +164,7 @@ class VezivAdminController extends Controller
         $disabled_today=array();
         foreach($appointments->hours as $hour)
         {
-            if(time()>=strtotime(date("Y-m-d")." ".$hour->start_time))
+            if(time()>=strtotime(date("Y-m-d",$appointments->current_day)." ".$hour->start_time))
                 $disabled_today[]=$hour->start_time;
         }
         $appointments->days[strtotime(date("Y-m-d 00:00:00",$appointments->current_day))]=$disabled_today;

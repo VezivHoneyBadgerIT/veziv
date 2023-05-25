@@ -16,7 +16,7 @@ class VezivappointController extends Controller
     public function index()
     {
         return view('vezivappoints.index', [
-            'vezivappoints' => Vezivappoint::all()->where("app_date",">=",strtotime(date("Y-m-d")))
+            'vezivappoints' => Vezivappoint::where("app_date",">=",strtotime(date("Y-m-d")))->orderBy('app_date','ASC')->get()
         ]);
     }
 

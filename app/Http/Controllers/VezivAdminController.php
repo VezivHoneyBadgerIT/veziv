@@ -160,7 +160,7 @@ class VezivAdminController extends Controller
         $appointments->current_day_str=date("d/m/Y H:i:s",$appointments->current_day);
         $appointments->hours=Vezivhour::orderBy('start_time','ASC')->get();
         $appointments->days=array();
-        $active_appointments=Vezivappoint::all()->where("app_date",">=",strtotime(date("Y-m-d")));
+        $active_appointments=Vezivappoint::where("app_date",">=",strtotime(date("Y-m-d")))->orderBy('app_date','ASC')->get();
         $disabled_today=array();
         foreach($appointments->hours as $hour)
         {
